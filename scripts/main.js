@@ -22,7 +22,7 @@ function onTitleBarButtonClick() {
     });
     app.render(true);
 }
-
+// yo
 // Hook to add the button to the title bar after FoundryVTT initialization
 Hooks.once('init', () => {
     const titleBar = document.getElementById('title-bar');
