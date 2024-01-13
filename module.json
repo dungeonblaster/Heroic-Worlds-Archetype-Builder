@@ -10,8 +10,7 @@
     "version": "1.0.0",
     "compatibility": {
       "minimum": "10",
-      "verified": "11"
-    "manifest": "https://github.com/dungeonblaster/Heroic-Worlds-Archetype-Builder/releases/download/latest/module.json",
+      "verified": "11",
     "download": "https://github.com/dungeonblaster/Heroic-Worlds-Archetype-Builder/archive/refs/tags/latest.zip"
     }
   }
