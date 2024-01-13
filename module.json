@@ -4,8 +4,8 @@
     "description": "Description of your module",
     "version": "0.1.0",
     "author": "Dungeon Man",
-    "compatibleCoreVersion": "0.7.x",
-    "minimumCoreVersion": "0.7.x",
+    "compatibleCoreVersion": "0.11.x",
+    "minimumCoreVersion": "0.11.x",
     "manifest": "https://your-hosting-location.com/module.json",
     "download": "https://your-hosting-location.com/your-module-name.zip"
 }
