@@ -1,11 +1,15 @@
 {
-    "name": "heroic-worlds-archetype-builder",
+    "id": "heroic-worlds-archetype-builder",
     "title": "Heroic Worlds Archetype Builder",
-    "description": "Description of your module",
-    "version": "0.1.0",
-    "author": "Dungeon Man",
-    "compatibleCoreVersion": "0.11.x",
-    "minimumCoreVersion": "0.11.x",
-    "manifest": "https://your-hosting-location.com/module.json",
-    "download": "https://your-hosting-location.com/your-module-name.zip"
-}
+    "description": "A simple module created as a demo for working in the Foundry Virtual Tabletop framework.",
+    "authors": [
+      {
+      "name": "Dungeon Man"
+      }
+    ],
+    "version": "1.0.0",
+    "compatibility": {
+      "minimum": "10",
+      "verified": "11"
+    }
+  }
