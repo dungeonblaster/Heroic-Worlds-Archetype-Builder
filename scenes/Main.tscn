@@ -1,0 +1,146 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/Paddle.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/Ball.gd" id="3"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 52.0
+
+[sub_resource type="CircleShape2D" id="2"]
+radius = 52.0
+
+[sub_resource type="CircleShape2D" id="3"]
+radius = 18.0
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(1180, 24)
+
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(30, 640)
+
+[sub_resource type="Gradient" id="6"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.42, 1)
+colors = PackedColorArray(0.0627451, 0.32549, 0.196078, 1, 0.0431373, 0.254902, 0.156863, 1, 0.0235294, 0.188235, 0.117647, 1)
+
+[sub_resource type="GradientTexture2D" id="7"]
+gradient = SubResource("6")
+width = 16
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1")
+table_half_extents = Vector2(560, 320)
+score_to_win = 11
+
+[node name="Table" type="Sprite2D" parent="."]
+texture = SubResource("7")
+centered = false
+position = Vector2(-560, -320)
+scale = Vector2(70, 40)
+
+[node name="TableDivider" type="Line2D" parent="."]
+points = PackedVector2Array(0, -320, 0, 320)
+default_color = Color(0.917647, 0.952941, 0.960784, 0.45)
+width = 4.0
+
+[node name="LeftPaddle" type="AnimatableBody2D" parent="."]
+script = ExtResource("2")
+collision_layer = 1
+collision_mask = 1
+movement_bounds = Vector2(-260, 260)
+up_action = "paddle_left_up"
+down_action = "paddle_left_down"
+move_speed = 520.0
+deflection_zone = 52.0
+position = Vector2(-480, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPaddle"]
+shape = SubResource("1")
+
+[node name="RightPaddle" type="AnimatableBody2D" parent="."]
+script = ExtResource("2")
+collision_layer = 1
+collision_mask = 1
+movement_bounds = Vector2(-260, 260)
+up_action = "paddle_right_up"
+down_action = "paddle_right_down"
+move_speed = 520.0
+deflection_zone = 52.0
+use_ai = true
+position = Vector2(480, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPaddle"]
+shape = SubResource("2")
+
+[node name="Ball" type="CharacterBody2D" parent="."]
+script = ExtResource("3")
+collision_layer = 1
+collision_mask = 1
+position = Vector2(0, 0)
+base_speed = 420.0
+speed_increase = 35.0
+max_speed = 820.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("3")
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+position = Vector2(0, -320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+shape = SubResource("4")
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+position = Vector2(0, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+shape = SubResource("4")
+
+[node name="LeftGoal" type="Area2D" parent="."]
+monitorable = false
+monitoring = false
+position = Vector2(-600, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftGoal"]
+shape = SubResource("5")
+
+[node name="RightGoal" type="Area2D" parent="."]
+monitorable = false
+monitoring = false
+position = Vector2(600, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightGoal"]
+shape = SubResource("5")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="ScoreLeft" type="Label" parent="HUD"]
+offset_left = 420.0
+offset_top = 32.0
+offset_right = 520.0
+offset_bottom = 92.0
+text = "0"
+theme_override_colors/font_color = Color(0.94902, 0.972549, 0.996078, 1)
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+
+[node name="ScoreRight" type="Label" parent="HUD"]
+offset_left = 760.0
+offset_top = 32.0
+offset_right = 860.0
+offset_bottom = 92.0
+text = "0"
+theme_override_colors/font_color = Color(0.94902, 0.972549, 0.996078, 1)
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+
+[node name="Message" type="Label" parent="HUD"]
+offset_left = 340.0
+offset_top = 620.0
+offset_right = 940.0
+offset_bottom = 670.0
+text = "Press Space to Serve"
+theme_override_colors/font_color = Color(0.94902, 0.972549, 0.996078, 0.85)
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1

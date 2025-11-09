@@ -1,0 +1,8 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://defaultenv"]
+
+[resource]
+
+background_mode=4
+background_color=Color(0.0588235, 0.0745098, 0.105882, 1)
+ambient_light_source=0
+fog_enabled=false
