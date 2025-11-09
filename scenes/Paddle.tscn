@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8k2j4m6n3p1"]
+
+[ext_resource type="Script" path="res://scripts/Paddle.gd" id="1_1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(20, 120)
+
+[node name="Paddle" type="CharacterBody2D"]
+script = ExtResource("1_1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_1")
+
+[node name="Sprite2D" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 1)
+offset_left = -10.0
+offset_top = -60.0
+offset_right = 10.0
+offset_bottom = 60.0
+color = Color(1, 1, 1, 1)
