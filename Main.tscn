@@ -1,0 +1,100 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkjcm2pslv0vn"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_2xfwy"]
+[ext_resource type="PackedScene" uid="uid://cxhpj72h7vqc3" path="res://Paddle.tscn" id="2_87grh"]
+[ext_resource type="PackedScene" uid="uid://c6y3xfj8l8ywc" path="res://Ball.tscn" id="3_tn2q6"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_2xfwy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.0666667, 0.372549, 0.203922, 1)
+
+[node name="CenterLine" type="Node2D" parent="."]
+position = Vector2(640, 0)
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+position = Vector2(640, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+position = Vector2(0, -10)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TopWall"]
+polygon = PackedVector2Array(-640, -20, 640, -20, 640, 0, -640, 0)
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+position = Vector2(640, 720)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BottomWall"]
+polygon = PackedVector2Array(-640, 0, 640, 0, 640, 20, -640, 20)
+
+[node name="Player1Paddle" parent="." instance=ExtResource("2_87grh")]
+position = Vector2(50, 360)
+player_number = 1
+
+[node name="PaddleBody" parent="Player1Paddle" index="1"]
+color = Color(0.2, 0.5, 0.8, 1)
+
+[node name="PaddleOutline" parent="Player1Paddle" index="3"]
+default_color = Color(0.1, 0.3, 0.6, 1)
+
+[node name="Player2Paddle" parent="." instance=ExtResource("2_87grh")]
+position = Vector2(1230, 360)
+player_number = 2
+
+[node name="PaddleBody" parent="Player2Paddle" index="1"]
+color = Color(0.8, 0.5, 0.2, 1)
+
+[node name="PaddleOutline" parent="Player2Paddle" index="3"]
+default_color = Color(0.6, 0.3, 0.1, 1)
+
+[node name="Ball" parent="." instance=ExtResource("3_tn2q6")]
+position = Vector2(640, 360)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Player1Score" type="Label" parent="UI"]
+offset_left = 320.0
+offset_top = 50.0
+offset_right = 420.0
+offset_bottom = 150.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 0.5)
+theme_override_font_sizes/font_size = 72
+text = "0"
+horizontal_alignment = 1
+
+[node name="Player2Score" type="Label" parent="UI"]
+offset_left = 860.0
+offset_top = 50.0
+offset_right = 960.0
+offset_bottom = 150.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 0.5)
+theme_override_font_sizes/font_size = 72
+text = "0"
+horizontal_alignment = 1
+
+[node name="WinnerLabel" type="Label" parent="UI"]
+visible = false
+offset_left = 340.0
+offset_top = 300.0
+offset_right = 940.0
+offset_bottom = 420.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "Player 1 Wins!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Instructions" type="Label" parent="UI"]
+offset_left = 20.0
+offset_top = 680.0
+offset_right = 600.0
+offset_bottom = 710.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 0.7)
+theme_override_font_sizes/font_size = 18
+text = "Player 1: W/S  |  Player 2: Arrow Keys  |  ESC: Reset"
+
+[editable path="Player1Paddle"]
+[editable path="Player2Paddle"]
